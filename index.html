@@ -1,0 +1,30 @@
+  <html>
+    <head>
+      <title>Hours Counter</title>
+      <style>
+        button {
+          padding: 10px;
+          display: inline-block;
+        }
+      </style>
+      <script type="text/javascript" src="index.js"></script>
+      <script type="text/javascript" src="common.js"></script>
+    </head>
+    <body>
+        <p>Calendar:</p>
+        <select id="calSel">
+        </select>
+        <hr/>
+
+        <p>Measurment Type</p>
+        <select id="measureType">
+          <option value="startStop">Start-Stop</option>
+          <option value="sumTotal">Sum Total</option>
+        </select>
+        <button id="measureTypeButton">Save</button>
+        <hr/>
+
+        <button id="getEvents">Get Events</button>
+        <div id="events"></div>
+    </body>
+  </html>
