@@ -40,7 +40,7 @@ function addOption(select, each)
 function createSummaryStartStop(init) {
     let e = document.getElementById("calSel");
     let strUser = e.options[e.selectedIndex].value;
-    let eventsDiv = document.getElementById("events");
+    
     let mondy = getMondayDate().toISOString();
     let request = 'https://www.googleapis.com/calendar/v3/calendars/' + strUser + '/events?timeMin=' + mondy;
     let events = fetch(request, init);
@@ -51,7 +51,7 @@ function createSummaryStartStop(init) {
             days[ (i + getMondayDate().getDate()).toString() ] = {};
         }
         data.items.forEach((x) => sortEventsIntoDays(x, days));
-        addSummary(days, eventsDiv);
+        addSummary(days);
     });
 }
 
@@ -69,19 +69,25 @@ function enrichWithHours(days)
     }
     return days
 }
-function addSummary(days, hoursDiv) {
+function addSummary(days) {
     let totalHours = 0;
     let totalMinutes = 0;
     let x = enrichWithHours(days);
+    let eventsDiv = document.getElementById("events");
     for (var d in days) {
-        let line = document.createElement('p');
+        let line = document.createElement('li');
         totalHours += days[d]['Hours'];
         totalMinutes += days[d]['Minutes'];
-        line.innerText = d + ' ' + days[d]['Hours'] + ':' + days[d]['Minutes'];
-        hoursDiv.appendChild(line);
+        
+        line.setAttribute("class","list-group-item");
+        line.innerText = d + ' - ' + days[d]['Hours'] + ':' + days[d]['Minutes'];
+        eventsDiv.appendChild(line);
     }
-    let summaryLine = document.createElement('p');
+    let summaryLine = document.createElement('li');
+    summaryLine.setAttribute("class","list-group-item");
     summaryLine.innerText = 'Total:' + ' ' + (totalHours + Math.floor(totalMinutes / 60)) + ':' + (totalMinutes % 60).toString().padStart(2,"0");
-    hoursDiv.appendChild(summaryLine);
+    
+    
+    eventsDiv.appendChild(summaryLine);
 }
 

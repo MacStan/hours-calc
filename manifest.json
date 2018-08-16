@@ -1,0 +1,40 @@
+  {
+    "name": "OAuth Tutorial FriendBlock",
+    "version": "1.0",
+    "description": "Uses OAuth to connect to Google's People API and display contacts photos.",
+    "manifest_version": 2,
+    
+    "browser_action": {
+      "default_title": "Calendar Helper",
+      "default_popup": "index.html"
+      
+    },
+    
+    "options_page": "options.html",
+
+    "background": {
+      "scripts": [
+        "background.js"
+      ],
+      "persistent": false
+    },
+    
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpTFQVcp7nC+ZCNBrJnNDwzJXC8yXjgDUeLNDt+IvjwU7nKlSxp2V2n2b/A4UzQ+sUhEWGPmeLptpP0GZ5afrvhMNq6SRLaqzCKxHkPhGgX1kqNDdwpOcS9dLk2JN5RSELca/7iE7W4WkBintYewM0JvxfGThfqG/qKoclR0qfQdfUEsREjHKDXflJAvkzN/9ji9RBfYUwkGADvgskiEixeIbb5pmLo8fOcTjJYpXJWnfQ2ZKa3YWbdIjRVd3BveKLR1HCYC7fvUhWAwSjuhWbuezz1yYClHr1ERvCrMLoKyzmk0Y13v/33Eub+Iu5M87xAwa9Z2pRA364gBq/qHHQIDAQAB",
+
+    
+    "oauth2": {
+        "client_id": "55561893459-6ooi9ksmnpkkjnjil9p681f4c4ieu9qa.apps.googleusercontent.com",
+        "scopes":[
+        "https://www.googleapis.com/auth/contacts.readonly",
+        "https://www.googleapis.com/auth/calendar.readonly",
+        "https://www.googleapis.com/auth/calendar",
+        "https://www.googleapis.com/auth/plus.login"
+        ]
+    },
+    
+    "permissions": [
+        "identity",
+        "storage",
+        "declarativeContent"
+    ]
+  }

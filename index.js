@@ -9,7 +9,7 @@ window.onload = function() {
             },
             'contentType': 'json'
         };
-
+        
         chrome.storage.sync.get('measureType', function(data) {
             if(data.measureType == "startStop")
             {
