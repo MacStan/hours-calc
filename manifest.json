@@ -6,7 +6,7 @@
     
     "browser_action": {
       "default_title": "Calendar Helper",
-      "default_popup": "index.html"
+      "cm_default_popup": "index.html"
       
     },
     

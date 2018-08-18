@@ -4,6 +4,11 @@ chrome.runtime.onInstalled.addListener(function() {
     function() {
       console.log("Measure type set to stop-start.");
     });
+    chrome.storage.sync.set(
+      {defaultCalendar: 'none'}, 
+      function() {
+        console.log("Default Calendar set to none");
+      });
 });
   
 chrome.browserAction.onClicked.addListener(function() {

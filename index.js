@@ -9,42 +9,59 @@ window.onload = function() {
             },
             'contentType': 'json'
         };
-        
+        var mType;
         chrome.storage.sync.get('measureType', function(data) {
             if(data.measureType == "startStop")
             {
-                document.querySelector('#getEvents').addEventListener('click', () => createSummaryStartStop(init));
+                mType = data.measureType;
             }
             else if(data.measureType == "sumTotal")
             {
-                document.querySelector('#getEvents').addEventListener('click', () => createSummarySumTotal(init));
+                mType = data.measureType;
+            }
+            else{
+                mType = "startStop";
             }
           });
         
-          document.querySelector("#measureTypeButton").addEventListener('click',
+          document.querySelector("#calendarButton").addEventListener('click',
             () => {
-                let measurmentTypeSelect = document.querySelector("#measureType");
-                let mType = measurmentTypeSelect.options[measurmentTypeSelect.selectedIndex].value;
+                let measurmentTypeSelect = document.querySelector("#calSel");
+                let calendarId = measurmentTypeSelect.options[measurmentTypeSelect.selectedIndex].value;
                 chrome.storage.sync.set(
-                    {measureType: mType }, 
-                    () => console.log("Changed mType to: " + mType )
+                    { defaultCalendar: calendarId }, 
+                    () => console.log("Changed defaultCalendar to: " + calendarId )
                 );
                 location.reload();
             });
+            
 
-        createCalendarDropdown(init);
+        chrome.storage.sync.get('defaultCalendar', function(data) {
+            var x = createCalendarDropdown(init, mType, data);
+        });
+        
     });
 };
 
-function createCalendarDropdown(init) {
+function createCalendarDropdown(init, mType, defaultCalendar = "none") {
     var calendarList = fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList', init);
     let select = document.querySelector("#calSel");
-    calendarList.then((response) => response.json()).then((x) => addOptions(select, x));
+    calendarList
+        .then((response) => response.json())
+        .then((x) => addOptions(select, x, defaultCalendar))
+        .then( ()=>{
+    var calendarSelect = document.querySelector("#calSel");
+    var calendar = calendarSelect.options[calendarSelect.selectedIndex].text;
+    if(!calendar.includes("- - -"))
+            {
+                if(mType == "startStop")
+                {
+                    createSummaryStartStop(init);
+                }
+                else if( mType == "sumTotal")
+                {
+                    createSummarySumTotal(init);
+                }
+            }
+        });
 }
-
-function createSummarySumTotal(init)
-{
-
-}
-
-
