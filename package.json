@@ -1,0 +1,16 @@
+{
+    "devDependencies": {
+        "@babel/cli": "^7.0.0",
+        "@babel/core": "^7.0.0",
+        "@babel/preset-env": "^7.0.0",
+        "@babel/preset-react": "^7.0.0",
+        "babel-core": "^6.26.3",
+        "jest": "^23.5.0"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "dependencies": {
+        "babel-preset-minify": "^0.4.3"
+    }
+}

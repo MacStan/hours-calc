@@ -1,0 +1,54 @@
+<html>
+
+<head>
+  <title>Hours Counter</title>
+  <style>
+    body {
+
+      width: 550px;
+      height: 285px;
+    }
+  </style>
+
+  <link href="../bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body class="p-1" style="text-align: center">
+  <!-- Calendar Select-->
+  <div class="card h-100 w-100 ">
+    <div class="card-header">
+      <div class="container-fluid" id="calendarSelectHolder">
+        <div class="row">
+          <div id="calSel" class="col-8">
+            <select id="calendarSelect" class="form-control form-control-sm">
+              <option> - - - </option>
+            </select>
+          </div>
+
+          <div class="col-4">
+            <button class="btn btn-block btn-secondary btn-sm" id="calendarButton">Save as default</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Hour summary section -->
+    <div class="card-body " id="hoursSummary">
+
+    </div>
+
+  </div>
+  <script type="text/javascript" src="../react-0.14.3/build/react.js"></script>
+  <script type="text/javascript" src="../react-0.14.3/build/react-dom.js"></script>
+
+  <!-- <script type="text/javascript" src="../out/compiled.js"></script> -->
+  <script type="text/javascript" src="../out/index.js"></script>
+  <script type="text/javascript" src="../out/lengthCount.js"></script>
+  <script type="text/javascript" src="../out/differenceCount.js"></script>
+  <script type="text/javascript" src="../out/common.js"></script>
+
+  <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="../moment/moment.min.js"></script>
+</body>
+
+</html>
